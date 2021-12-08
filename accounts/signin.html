@@ -28,7 +28,7 @@
     </script>
 
     <script src="../static/js/GoogleOAuth.js"></script>
-
+    <script src="../static/js/FacebookOAuth.js"></script>
 
 <script>
   //初始化
@@ -61,7 +61,12 @@
           //呼叫FB.api()取得使用者資料
           FB.api('/me',{fields: 'id,name,email'}, function (response) {
               //這邊就可以判斷取得資料跟網站使用者資料是否一致
-	      console.log("hello, response = " + response)
+	      console.log("hello, name = " + response.name);
+	      console.log("hello, email = " + response.email);
+	      console.log("hello, response = " + JSON.stringify(response));
+	      var access_token = FB.getAuthResponse()['accessToken'];
+	      console.log("hello, FB.getAuthResponse = " + JSON.stringify(FB.getAuthResponse()));
+	      console.log("hello, access_token = " + access_token);
           });
         //沒授權過應用程式
         } else {
@@ -70,7 +75,12 @@
             if (response.authResponse) {
               FB.api('/me',{fields: 'id,name,email'}, function (response) {
                 //這邊就可以判斷取得資料跟網站使用者資料是否一致
-	      console.log("hello, response = " + response)
+	      console.log("hello, name = " + response.name);
+	      console.log("hello, email = " + response.email);
+	      console.log("hello, response = " + JSON.stringify(response));
+	      var access_token = FB.getAuthResponse()['accessToken'];
+	      console.log("hello, FB.getAuthResponse = " + JSON.stringify(FB.getAuthResponse()));
+	      console.log("hello, access_token = " + access_token);
               });
             }
           //FB.login()預設只會回傳基本的授權資料
@@ -82,8 +92,6 @@
     });
   });
 </script>
-
-
 
 
     <script>
